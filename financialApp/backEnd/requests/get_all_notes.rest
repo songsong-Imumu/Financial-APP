@@ -1,0 +1,11 @@
+# 用于测试网络请求的文件,可以代替postman
+
+# POST http://localhost:3001/api/notes
+# Content-Type: application/json
+
+# {
+#   "content":"VS Code REST",
+#   "importtant":false
+# }
+
+# DELETE http://localhost:3001/api/notes/1
