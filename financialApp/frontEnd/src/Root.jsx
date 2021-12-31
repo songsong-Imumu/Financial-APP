@@ -5,6 +5,7 @@ import Agriculture from "./Agriculture";
 import Financing from "./Financing";
 import Recruit from "./Recruit";
 import LogSign from "./Log&Sign";
+import AdministratorHead from "./AdministratorHead";
 import {
   BrowserRouter as Router,
   // HashRouter as Router,
@@ -17,6 +18,7 @@ export default class Root extends React.Component {
   }
   render() {
     const { current } = this.state
+    console.log(current)
     const style = {
       position: "absolute",
       width: "99%",
@@ -24,26 +26,35 @@ export default class Root extends React.Component {
     };
     return (
       <div id="Root" style={style}>
-        <Head callback={this.getTab} current={this.state.current}></Head>
-        {/* <Router>
-          <Switch>
-            <Route path="/home" component={Home}></Route>
-            <Route path="/agriculture" component={Agriculture}></Route>
-            <Route path="/recruit" component={Recruit}></Route>
-            <Route path="/logsign" component={LogSign}></Route>
-          </Switch>
-        </Router> */}
-        {current === "home" ? (
-          <Home />
-        ) : current === "logsign" ? (
-          <LogSign callback={this.getTab}></LogSign>
-        ) : current === "agriculture" ? (
-          <Agriculture></Agriculture>
-        ) : current === "recruit" ? (
-          <Recruit></Recruit>
-        ) : current === "financing" ?
-          <Financing></Financing>
-          : null}
+        {current === 'administrator' ? <AdministratorHead></AdministratorHead> :
+          <g>
+            <Head callback={this.getTab} current={this.state.current}></Head>
+            {current === "home" ? (
+              <Home />
+            ) : current === "logsign" ? (
+              <LogSign callback={this.getTab}></LogSign>
+            ) : current === "agriculture" ? (
+              <Agriculture></Agriculture>
+            ) : current === "recruit" ? (
+              <Recruit></Recruit>
+            ) : current === "financing" ?
+              <Financing></Financing>
+              : null}
+          </g>
+          //   (<Head callback={this.getTab} current={this.state.current}></Head>
+          //             {current === "home" ? (
+          //   <Home />
+          // ) : current === "logsign" ? (
+          //   <LogSign callback={this.getTab}></LogSign>
+          // ) : current === "agriculture" ? (
+          //   <Agriculture></Agriculture>
+          // ) : current === "recruit" ? (
+          //   <Recruit></Recruit>
+          // ) : current === "financing" ?
+          //   <Financing></Financing>
+          //   : null})
+        }
+
       </div>
     );
   }

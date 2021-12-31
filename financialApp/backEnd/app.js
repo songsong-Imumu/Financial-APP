@@ -5,6 +5,7 @@ require('./Mongodb/agriculture')
 require('./Mongodb/invitation')
 require('./Mongodb/information')
 require('./Mongodb/financing')
+require('./Mongodb/virtualRecruit')
 
 // setup
 const express = require('express')
@@ -13,43 +14,6 @@ const app = express()
 const child_process = require('child_process')
 const mongoose = require('mongoose')
 
-let notes = [{
-    id: '1',
-    title: '网站HTTPS功能介绍:开启网络加密新时代',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2020-12-23'
-  },
-  {
-    id: '2',
-    title: '建站【域名使用】教程总览',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2020-11-13'
-  },
-  {
-    id: '3',
-    title: '在凡科购买的域名，如何获取域名证书',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2020-09-27'
-  },
-  {
-    id: '4',
-    title: '域名转出外部管理教程',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2020-09-25'
-  },
-  {
-    id: '5',
-    title: '如何购买域名',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2020-03-12'
-  },
-  {
-    id: '6',
-    title: 'https证书到期续费教程',
-    content: 'Being a manager is hard work.We ve a created a set of tools that helps you manage your team on a day to day basis so you can focus on the big pictures.',
-    date: '2019-03-14'
-  }
-]
 app.use(express.json())
 app.use(cors())
 
@@ -62,11 +26,6 @@ const db = mongoose.connection;
 // catch error
 db.on('error', (err) => {
   console.log(err)
-})
-
-
-app.get('/api/notes', (req, res) => {
-  res.json(notes)
 })
 
 // 接收来自sign注册按钮的信息
@@ -114,6 +73,14 @@ app.get('/recruit', (req, res) => {
   })
 })
 
+// 返回虚拟recurit的信息
+app.get('/virtualRecruit', (req, res) => {
+  const Model = mongoose.model('virtualRecruit')
+  Model.find((err, data) => {
+    res.send(data)
+  })
+})
+
 // 接收来自fill填写的信息
 app.post('/fill', (req, res) => {
   // 从客户端获取数据
@@ -127,7 +94,7 @@ app.post('/fill', (req, res) => {
     Tag2
   } = req.body
   // 向MongoDB中插入数据
-  insertRecruit(ReSalary, ReClass, ReCompany, ReDate, ReTitle, Tag1, Tag2)
+  insertvirtualRecruit(ReSalary, ReClass, ReCompany, ReDate, ReTitle, Tag1, Tag2)
 })
 
 // 返回financing筹资信息
@@ -160,6 +127,44 @@ app.post('/addNum', (req, res) => {
   updatefinancing(FinName, addNum)
 })
 
+// 接收来自pushRecruit的information
+app.post('/pushRecruit', (req, res) => {
+  const {
+    information
+  } = req.body
+  information.forEach(inf => {
+    const {
+      ReSalary,
+      ReClass,
+      ReCompany,
+      ReDate,
+      ReTitle,
+      Tag1,
+      Tag2
+    } = inf
+    insertRecruit(ReSalary, ReClass, ReCompany, ReDate, ReTitle, Tag1, Tag2)
+  })
+})
+
+// 接收来自cancelRecruit的ID列表
+app.post('/cancelRecruit', (req, res) => {
+  const {
+    ID
+  } = req.body
+  ID.forEach(id => {
+    deletevirtualRecruit(id)
+  })
+})
+
+
+// insertvirtualRecruit(3000, "人事", "阿里巴巴3", "2020", "招聘", ["吃苦"], ["奶酪"])
+// insertvirtualRecruit(3000, "人事", "阿里巴巴2", "2020", "招聘", ["吃苦"], ["奶酪"])
+// insertvirtualRecruit(3000, "人事", "阿里巴巴1", "2020", "招聘", ["吃苦"], ["奶酪"])
+// insertvirtualRecruit(3000, "人事", "阿里巴", "2020", "招聘", ["吃苦"], ["奶酪"])
+// insertvirtualRecruit(3000, "人事", "阿里", "2020", "招聘", ["吃苦"], ["奶酪"])
+// insertvirtualRecruit(3000, "人事", "阿", "2020", "招聘", ["吃苦"], ["奶酪"])
+
+// deletevirtualRecruit()
 
 const PORT = 3001
 app.listen(PORT)
