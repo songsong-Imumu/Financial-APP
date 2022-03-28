@@ -1,15 +1,1 @@
-branches:
-  only:
-    - main
-job1:
-  script:
-    - cd /financialApp/backend
-    - npm install
-    - nodemon app.js
-
-job2:
-  script:
-    - cd /financialApp/frontend
-    - npm install
-    - npm start
-    
+language: node_js
