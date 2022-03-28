@@ -1,11 +1,11 @@
 job1:
   script:
-    - cd /backend
+    - cd /financialApp/backend
     - npm install
     - nodemon app.js
 
 job2:
   script:
-    - cd /frontend
+    - cd /financialApp/frontend
     - npm install
     - npm start
