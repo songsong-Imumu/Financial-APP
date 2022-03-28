@@ -1,3 +1,6 @@
+branches:
+  only:
+    - main
 job1:
   script:
     - cd /financialApp/backend
@@ -9,3 +12,4 @@ job2:
     - cd /financialApp/frontend
     - npm install
     - npm start
+    
