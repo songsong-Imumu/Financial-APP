@@ -10,8 +10,8 @@ import number4 from "./img/4_round_solid_数字4_by_climei.svg";
 import number5 from "./img/5_round_solid_数字5_by_climei.svg";
 import number6 from "./img/6_round_solid_数字6_by_climei.svg";
 import axios from "axios";
-const recruitUrl = "http://101.35.148.132:3001/recruit";
-const fillUrl = "http://101.35.148.132:3001/fill";
+const recruitUrl = "http://localhost:3001/recruit";
+const fillUrl = "http://localhost:3001/fill";
 const { Option } = Select
 export default class Recruit extends React.Component {
   state = {

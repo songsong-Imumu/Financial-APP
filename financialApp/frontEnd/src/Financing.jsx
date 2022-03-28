@@ -15,9 +15,9 @@ import help1 from './img/人们/1/help1.jpg'
 import help2 from './img/人们/1/help2.jpg'
 
 import axios from "axios";
-const financingtUrl = "http://101.35.148.132:3001/financing";
-const editorUrl = "http://101.35.148.132:3001/editor";
-const addNumUrl = "http://101.35.148.132:3001/addNum";
+const financingtUrl = "http://localhost:3001/financing";
+const editorUrl = "http://localhost:3001/editor";
+const addNumUrl = "http://localhost:3001/addNum";
 const { TextArea } = Input;
 const { Option } = Select
 export default class Financing extends React.Component {
@@ -146,7 +146,7 @@ export default class Financing extends React.Component {
   render() {
     const props = {
       name: 'file',
-      action: 'http://101.35.148.132:3001/local',
+      action: 'http://localhost:3001/local',
       headers: {
         authorization: 'authorization-text',
       },

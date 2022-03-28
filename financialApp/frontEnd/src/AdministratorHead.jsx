@@ -9,9 +9,9 @@ import {
 import axios from "axios";
 
 const { Header } = Layout;
-const virtualRecruitUrl = "http://101.35.148.132:3001/virtualRecruit"
-const cancelRecruitUrl = "http://101.35.148.132:3001/cancelRecruit"
-const pushRecruitUrl = "http://101.35.148.132:3001/pushRecruit"
+const virtualRecruitUrl = "http://localhost:3001/virtualRecruit"
+const cancelRecruitUrl = "http://localhost:3001/cancelRecruit"
+const pushRecruitUrl = "http://localhost:3001/pushRecruit"
 
 
 export default class AdministratorHead extends React.Component {

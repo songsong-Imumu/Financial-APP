@@ -3,7 +3,7 @@ import { Layout, Menu, Button, Carousel, BackTop, Avatar, Input, Space, message 
 import { UserOutlined, TagOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import axios from "axios";
-const signUrl = "http://101.35.148.132:3001/sign";
+const signUrl = "http://localhost:3001/sign";
 
 export default class Register extends React.Component {
   state = {

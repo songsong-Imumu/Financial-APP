@@ -3,7 +3,7 @@ import { Layout, Menu, Button, Row, Col, Select, Carousel, BackTop, Avatar, Inpu
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone, LoginOutlined, GithubOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import axios from "axios";
-const logUrl = "http://101.35.148.132:3001/log";
+const logUrl = "http://localhost:3001/log";
 const { Option } = Select
 export default class Register extends React.Component {
   state = {

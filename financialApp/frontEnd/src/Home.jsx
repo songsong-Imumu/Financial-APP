@@ -26,8 +26,8 @@ import number5 from "./img/5_round_solid_数字5_by_climei.svg";
 import number6 from "./img/6_round_solid_数字6_by_climei.svg";
 // 测试axios
 import axios from "axios";
-const informationUrl = "http://101.35.148.132:3001/information"
-const invatationUrl = "http://101.35.148.132:3001/invitation"
+const informationUrl = "http://localhost:3001/information"
+const invatationUrl = "http://localhost:3001/invitation"
 
 export default class Home extends React.Component {
   state = {
