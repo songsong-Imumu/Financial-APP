@@ -1,0 +1,11 @@
+job1:
+  script:
+    - cd /backend
+    - npm install
+    - nodemon app.js
+
+job2:
+  script:
+    - cd /frontend
+    - npm install
+    - npm start
